@@ -1,4 +1,6 @@
+// const base_url='http://localhost:3000/api/v1/'
 const base_url='https://stormy-bastion-21788.herokuapp.com/api/v1/'
+const proxy='https://cors-anywhere.herokuapp.com/'
 
 const imageBoard=document.getElementById('images')
 const bigUL=document.querySelector('.list-group')
@@ -119,7 +121,7 @@ function filterByColor(abbrev){
 //helper and sets main page to false(as artist/set don't need infinite scroll
 function getRenderList(type){
      clearAll()
-     let query=base_url+type+'s'
+     let query=proxy+base_url+type+'s'
      fetch(query)
      .then(response=>response.json())
      .then(json=>json.forEach((ele)=>{
