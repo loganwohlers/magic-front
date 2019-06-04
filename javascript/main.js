@@ -1,4 +1,4 @@
-// const base_url = 'http://localhost:3000/api/v1/'
+//heroku link
 const base_url = 'https://mtgallery.herokuapp.com/api/v1'
 
 const imageBoard = document.getElementById('images')
@@ -19,9 +19,9 @@ $(window).scroll(function () {
 home()
 
 //checks if last query was a color OR just homepage and renders 100 more images upon end of page scroll
-function loadMore(lq) {
-     if (lq.length !== 1)
-          fetch(lq)
+function loadMore(lastQueryUsed) {
+     if (lastQueryUsed.length !== 1)
+          fetch(lastQueryUsed)
                .then(response => response.json())
                .then(json => {
                     json.map(renderArt)
@@ -41,7 +41,6 @@ for (let i = 0; i < 7; i++) {
      let color = mainNav.children[i]
      color.addEventListener('click', (e) => {
           clearAll();
-          //actual id on the list item (color abbrev)
           filterByColor(color.id)
      })
 }
@@ -58,7 +57,6 @@ sets.addEventListener('click', (e) => {
 })
 
 //reset to "home-page" and render 100 random cards
-// + 'cards'
 function home() {
      clearAll()
      fetch(base_url + "/cards")
@@ -119,7 +117,7 @@ function filterByColor(abbrev) {
 //helper and sets main page to false(as artist/set don't need infinite scroll
 function getRenderList(type) {
      clearAll()
-     let query = base_url + "/" + type + 's'  //proxy+
+     let query = `${base_url}/${type}s`
      fetch(query)
           .then(response => response.json())
           .then(json => json.forEach((ele) => {
@@ -154,7 +152,7 @@ function filterBy(name, type) {
      }
      mainPage = false
      lastQuery = base_url + type + 'filter'
-     fetch(base_url + "/" + type + 'filter', config)
+     fetch(`${base_url}/${type}filter`, config)
           .then(response => response.json())
           .then(json => json.map(renderArt))
 }
@@ -197,6 +195,6 @@ function addLikes(e, card) {
                "likes": likes
           })
      }
-     fetch(base_url + 'cards' + '/' + card.id, config)
+     fetch(`${base_url}cards/${card.id}`, config)
           .then(e.target.innerText = `Likes (${likes})`)
 }
