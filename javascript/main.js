@@ -1,11 +1,9 @@
-const base_url = 'http://localhost:3000/api/v1/'
-// const base_url='https://stormy-bastion-21788.herokuapp.com/api/v1/'
-// const proxy='https://cors-anywhere.herokuapp.com/'
+// const base_url = 'http://localhost:3000/api/v1/'
+const base_url = 'https://mtgallery.herokuapp.com/api/v1'
 
 const imageBoard = document.getElementById('images')
 const bigUL = document.querySelector('.list-group')
 const displayModal = document.getElementById('displayModal')
-
 const title = document.getElementById("title")
 const mainNav = document.querySelector(".navbar-nav")
 
@@ -60,14 +58,15 @@ sets.addEventListener('click', (e) => {
 })
 
 //reset to "home-page" and render 100 random cards
+// + 'cards'
 function home() {
      clearAll()
-     fetch(base_url + 'cards')
+     fetch(base_url + "/cards")
           .then(response => response.json())
           .then(json => {
                json.map(renderArt)
           })
-     lastQuery = (base_url + 'cards')
+     lastQuery = (base_url + '/cards')
      mainPage = true
 }
 
@@ -112,7 +111,7 @@ function filterByColor(abbrev) {
      }
      mainPage = true;
      lastQuery = abbrev
-     fetch(base_url + 'colorfilter', config)
+     fetch(base_url + '/colorfilter', config)
           .then(response => response.json())
           .then(json => json.map(renderArt))
 }
@@ -120,7 +119,7 @@ function filterByColor(abbrev) {
 //helper and sets main page to false(as artist/set don't need infinite scroll
 function getRenderList(type) {
      clearAll()
-     let query = base_url + type + 's'  //proxy+
+     let query = base_url + "/" + type + 's'  //proxy+
      fetch(query)
           .then(response => response.json())
           .then(json => json.forEach((ele) => {
@@ -155,7 +154,7 @@ function filterBy(name, type) {
      }
      mainPage = false
      lastQuery = base_url + type + 'filter'
-     fetch(base_url + type + 'filter', config)
+     fetch(base_url + "/" + type + 'filter', config)
           .then(response => response.json())
           .then(json => json.map(renderArt))
 }
