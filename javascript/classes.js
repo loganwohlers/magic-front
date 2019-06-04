@@ -1,4 +1,5 @@
 class MTGCard {
+     //need to re-write this to use proper serialized data
      constructor(data) {
           this.id = data.id
           this.name = data.name;
@@ -81,7 +82,7 @@ class MTGCard {
            </div>
           
           </div>
-          
+
           <div class="modal-footer d-block">
                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
           </div>
