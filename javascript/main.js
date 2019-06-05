@@ -193,6 +193,6 @@ function addLikes(e, card) {
                "likes": likes
           })
      }
-     fetch(`${base_url}cards/${card.id}`, config)
+     fetch(`${base_url}/cards/${card.id}`, config)
           .then(e.target.innerText = `Likes (${likes})`)
 }
