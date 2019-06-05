@@ -190,8 +190,6 @@ function addLikes(e, card) {
                "flavor_text": card.flavorText,
                "type_line": card.type,
                "card_set_id": card.setID,
-               "artist_name": card.artistName,
-               "set_name": card.setName,
                "likes": likes
           })
      }
