@@ -20,7 +20,7 @@ The front end itself is a Single Page Application built purely with vanilla java
 
 If 1500 cards is not enough (I understand) the [Bulk Download]https://scryfall.com/docs/api/bulk-data option from Scryfall is an option.  To set up the project you will need to fork/clone the front and back end from GitHub in order to run them on your local machine.  In the Rails backend- download the Bulk Option of your choosing and create a new file for it.  
 
-Then in the seeds.rb file change filepath for the jason_hash variable to whatever you've named your JSON file.
+Then in the seeds.rb file change filepath for the data)hash variable (on line 15) to whatever you've named your JSON file.
 data_hash = JSON.parse(File.read(YOUR_LOCAL_PATH_HERE)
 
 Then run rake db migrate && rake db:seed (note that this takes a very long time for the full 40k cards).  Once the data is seeded in the backend simply run the index.html file in the frontend in your browser.
